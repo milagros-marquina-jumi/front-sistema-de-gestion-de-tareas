@@ -1,5 +1,11 @@
 # FrontendTareas
 
+
+
+https://github.com/user-attachments/assets/739c2915-8a28-4063-a788-a764ed22e3eb
+
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
 
 ## Development server
