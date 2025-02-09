@@ -1,0 +1,6 @@
+@import 'ngx-toastr/toastr';
+
+body {
+  background: linear-gradient(to right, #ebf7f2 10%, #d0ebf1 90%); /* Degradado de azul claro a blanco azulado */
+  color: #333;
+}

@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card" style="width: 100%; max-width: 600px;">
+    <div class="card-header text-center">
+      <h3>{{tarea.id == 0 ? 'Nueva' : 'Editar'}} Tarea</h3>
+    </div>
+    <div class="card-body">
+      <form #datosForm="ngForm">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título: <span style="color:red;">(*)</span></label>
+          <input
+            type="text"
+            id="titulo"
+            class="form-control"
+            name="titulo"
+            [(ngModel)]="tarea.titulo"
+            required
+            #titulo="ngModel"
+          />
+          <app-form-error-message [control]="titulo" [inputRequired]="'El Título es requerido'" />
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción: <span style="color:red;">(*)</span></label>
+          <textarea
+            id="descripcion"
+            class="form-control"
+            name="descripcion"
+            [(ngModel)]="tarea.descripcion"
+            required
+            #descripcion="ngModel"
+          ></textarea>
+          <app-form-error-message [control]="descripcion" [inputRequired]="'La Descripción es requerida'" />
+        </div>
+
+        <div class="mb-3">
+          <label for="estado" class="form-label">Estado: <span style="color:red;">(*)</span></label>
+          <select
+            id="estado"
+            class="form-select"
+            name="estado"
+            [(ngModel)]="tarea.estado"
+            #estado="ngModel"
+            required
+          >
+            <option value="">::: Seleccione :::</option>
+            <option value="Por hacer">Por hacer</option>
+            <option value="En progreso">En progreso</option>
+            <option value="Completada">Completada</option>
+          </select>
+          <app-form-error-message [control]="estado" [inputRequired]="'Debe seleccionar un estado'" />
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!datosForm.form.valid"
+            type="button"
+            (click)="fnGuardar()"
+            class="btn btn-primary btn-lg font-weight-medium auth-form-btn">
+            <i class="fa fa-save"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

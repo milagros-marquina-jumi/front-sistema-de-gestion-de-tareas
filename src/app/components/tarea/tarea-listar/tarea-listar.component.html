@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <div class="text-center mt-3">
+    <button class="btn btn-success" (click)="fnNueva()">
+      <i class="fa fa-plus-circle"></i> Agregar Nueva Tarea
+    </button>
+  </div>
+
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="row mt-2">
+      <div *ngIf="tareas.length === 0" class="alert alert-warning" role="alert">
+        ¡Sin tareas registradas!
+      </div>
+
+      <div *ngFor="let tarea of tareas; let i = index" class="col-md-3 mt-1">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading{{i}}">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i">
+              Tarea: {{ tarea.titulo }}
+              <br />
+              <span class="badge ms-auto" [ngClass]="{
+                'bg-danger': tarea.estado === 'Por hacer',
+                'bg-success': tarea.estado === 'En progreso',
+                'bg-primary': tarea.estado === 'Completada'
+              }">
+               {{ tarea.estado }}
+              </span>
+            </button>
+          </h2>
+          <div id="collapse{{i}}" class="accordion-collapse collapse"><!--  [class.show]="i === 0" -->
+            <div class="accordion-body">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text">ID: {{ tarea.id }}</p>
+                  <p class="card-text">Descripción: {{ tarea.descripcion }}</p>
+
+                  <button class="btn btn-primary btn-sm" (click)="fnEditar(tarea.id)">
+                    <i class="fa fa-edit"></i> Editar
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-danger btn-sm" (click)="fnEliminar(tarea.id)">
+                    <i class="fa fa-trash"></i> Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+@if(control.invalid && (control.dirty || control.touched)){
+  <div class="text-danger">
+    @if(control.errors?.['required']){
+      <div>{{inputRequired? inputRequired: 'El campo es requerido'}}</div>
+    }
+
+    @if(control.errors?.['minlength']){
+      <div>Debe contener por lo menos {{control.getError('minlength').requiredLength}} caracteres</div>
+    }
+
+    @if(control.errors?.['min']){
+      <div>Debe ser un valor mayor o igual a {{control.getError('min').min}}</div>
+    }
+
+    @if(control.errors?.['max']){
+      <div>Debe ser un valor menor o igual a {{control.getError('max').max}}</div>
+    }
+
+    @if(control.errors?.['email']){
+      <div>Formato del correo no válido</div>
+    }
+
+    @if(control.errors?.['pattern']){
+      <div>{{inputPattern? inputPattern: 'El formato no es valido'}}</div>
+    }
+  </div>
+}
